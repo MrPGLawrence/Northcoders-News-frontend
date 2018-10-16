@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-// import * as api from ../ api.js;
 
 class Nav extends Component {
   state = {
@@ -8,23 +7,13 @@ class Nav extends Component {
   };
   render() {
     return (
-      <nav className="navigation">
-        {/* //     <Link to="/">
-        // Home
-        //     </link> */}
-      </nav>
+      <header className="header">
+        <Link to="/">Home</Link>
+        <Link to="/topics">Topics</Link>
+        <Link to="/users">Users</Link>
+      </header>
     );
   }
-
-  componentDidMount() {
-    this.getTopics();
-  }
-
-  fetchTopics = () => {
-    api.getTopics().then(topics => {
-      this.setState({
-        topics
-      });
-    });
-  };
 }
+
+export default Nav;
