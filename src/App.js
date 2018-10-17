@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./css/App.css";
 import * as api from "./api";
 import { Router } from "@reach/router";
 import Nav from "./components/Nav";
@@ -25,7 +25,7 @@ class App extends Component {
           <Articles path="/articles" />
           <Topics path="/topics" />
           <Users path="/users" />
-          <Article path="/articles/:_id" user="this.state.user" />
+          <Article path="/articles/:_id" user={this.state.user} />
           <User path="/users/:username" />
           <ArticlesByTopic path="/topics/:topic_slug/articles" />
           <Comments

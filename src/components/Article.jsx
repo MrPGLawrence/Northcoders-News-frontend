@@ -9,15 +9,13 @@ class Article extends Component {
   };
   render() {
     const { article } = this.state;
-    return (
-      <main>
-        <div key={article._id}>
+    return <main>
+        <div className="article" key={article._id}>
           <h1>{article.title}</h1>
-          <p>{article.body}</p>
-          <Comments id={this.props._id} />
+          <p className="article-p" >{article.body}</p>
+          <Comments user={this.props.user} id={this.props._id} />
         </div>
-      </main>
-    );
+      </main>;
   }
 
   componentDidMount() {

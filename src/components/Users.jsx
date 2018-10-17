@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Users.css";
+import "../css/Users.css";
 import * as api from "../api";
 import { Link } from "@reach/router";
 

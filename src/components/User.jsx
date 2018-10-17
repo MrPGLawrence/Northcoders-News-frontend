@@ -9,7 +9,7 @@ class User extends Component {
     const { user } = this.state;
     return (
       <main>
-        <div key={user._id}>
+        <div className="user" key={user._id}>
           <img
             className="user-image"
             src={user.avatar_url}

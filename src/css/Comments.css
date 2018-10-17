@@ -1,0 +1,17 @@
+.comments-body {
+  border: 2px solid lightgray;
+  list-style-type: none;
+  height: 60vh;
+  width: 80%;
+  margin: auto;
+  overflow: auto;
+  padding-bottom: 20px;
+}
+
+.comment {
+  padding-bottom: 20px;
+}
+
+.comment-p {
+  text-align: center;
+}

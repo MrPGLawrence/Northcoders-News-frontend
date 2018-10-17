@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../css/Topics.css";
 import * as api from "../api";
 import { Link } from "@reach/router";
 
@@ -9,7 +10,7 @@ class Topics extends Component {
   render() {
     const { topics } = this.state;
     return (
-      <main>
+      <main className="Topics">
         {topics.map(topic => {
           return (
             <div key={topic._id}>

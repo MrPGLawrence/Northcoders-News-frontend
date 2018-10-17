@@ -24,7 +24,7 @@ class Login extends Component {
           <>
             <button>Log Out</button>
             <Link to={`/users/${this.state.username}`}>
-              {this.state.username}
+              {this.props.user.name}
             </Link>
           </>
         )}

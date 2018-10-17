@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import "../css/Comments.css";
 import * as api from "../api";
 import CommentPoster from "./CommentPoster";
+import CommentDeleter from "./CommentDeleter";
 // import { Link } from "@reach/router";
 
 class Comments extends Component {
@@ -10,15 +12,18 @@ class Comments extends Component {
   render() {
     const { comments } = this.state;
     return (
-      <main className="comment-body">
-        <h1>Comments</h1>
-        <CommentPoster />
+      <main className="comments-body">
+        <h3>Comments</h3>
+        {!this.props.user.username ? (
+          <h5>Log In to post a comment</h5>
+        ) : (
+          <CommentPoster addComment={this.addComment} />
+        )}
         {comments.map(comment => {
-          return (
-            <div key={comment._id}>
-              <p>{comment.body}</p>
-            </div>
-          );
+          return <div className="comment" key={comment._id}>
+              <p className="comment-p">{comment.body}</p>
+              <CommentDeleter deleteComment={() => this.deleteComment(comment._id)} />
+            </div>;
         })}
       </main>
     );
@@ -30,10 +35,18 @@ class Comments extends Component {
     });
   }
 
-  addComment = (id, body) => {
-    api.postComment(id, body, this.props.user._id).then(comment => {
+  addComment = body => {
+    api.postComment(this.props.id, body, this.props.user._id).then(comment => {
       this.setState({
-        comments: { comment, ...this.state.comments }
+        comments: [comment, ...this.state.comments]
+      });
+    });
+  };
+
+  deleteComment = id => {
+    api.deleteComment(id).then(() => {
+      this.setState({
+        comments: this.state.comments.filter(comment => comment._id !== id)
       });
     });
   };

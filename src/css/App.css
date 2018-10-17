@@ -5,17 +5,9 @@
   grid-template-columns: 1fr;
   grid-template-rows: 7.5vh 1fr 12.5vh;
   grid-template-areas:
-    "header"
+    "nav"
     "main"
     "footer";
-}
-
-header {
-  grid-area: header;
-  background: rgba(194, 19, 49, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 main {
@@ -28,14 +20,24 @@ footer {
   background: rgba(0, 0, 0, 1);
 }
 
+button {
+  color: #ffffff;
+  background-color: #000000;
+}
+
 a {
   color: #000000;
   text-decoration: none;
 }
 
-.header a {
-  color: #ffffff;
-  padding: 10px;
+p {
+  margin: auto;
+  width: 80%;
+  padding-bottom: 20px;
+}
+
+.article-p {
+  text-align: left;
 }
 
 .user-image {
@@ -49,20 +51,14 @@ h1::first-letter {
   text-transform: uppercase;
 }
 
-.login button {
-  color: #ffffff;
-  background-color: #000000;
-}
-
 .login {
   color: #ffffff;
 }
 
-.comment-body {
-  border: 2px solid lightgray;
-  list-style-type: none;
-  height: 50vh;
-  width: 80%;
-  overflow: auto;
-  overflow-y: scroll;
+.article {
+  padding-bottom: 20px;
+}
+
+.user {
+  margin-top: 50px;
 }

@@ -1,0 +1,12 @@
+nav {
+  grid-area: nav;
+  background: rgba(194, 19, 49, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav a {
+  color: #ffffff;
+  padding: 10px;
+}
