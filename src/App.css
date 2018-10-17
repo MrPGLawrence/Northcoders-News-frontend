@@ -44,3 +44,25 @@ a {
   width: 200px;
   object-fit: cover;
 }
+
+h1::first-letter {
+  text-transform: uppercase;
+}
+
+.login button {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.login {
+  color: #ffffff;
+}
+
+.comment-body {
+  border: 2px solid lightgray;
+  list-style-type: none;
+  height: 50vh;
+  width: 80%;
+  overflow: auto;
+  overflow-y: scroll;
+}

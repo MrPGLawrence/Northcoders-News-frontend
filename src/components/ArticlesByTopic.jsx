@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as api from "../api";
 import { Link } from "@reach/router";
 
-class Articles extends Component {
+class ArticlesByTopic extends Component {
   state = {
     articles: []
   };
@@ -10,6 +10,7 @@ class Articles extends Component {
     const { articles } = this.state;
     return (
       <main>
+        <h1>{this.props.topic_slug}</h1>
         {articles.map(article => {
           return (
             <div key={article._id}>
@@ -24,14 +25,10 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    this.getArticles();
-  }
-
-  getArticles = () => {
-    api.getArticles().then(articles => {
+    api.getArticlesByTopic(this.props.topic_slug).then(articles => {
       this.setState({ articles });
     });
-  };
+  }
 }
 
-export default Articles;
+export default ArticlesByTopic;

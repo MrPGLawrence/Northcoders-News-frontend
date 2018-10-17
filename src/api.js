@@ -24,3 +24,25 @@ export const getUsersByUsername = username => {
     .get(`${API_URL}/users/${username}`)
     .then(({ data }) => data.user);
 };
+
+export const getArticlesByTopic = topicSlug => {
+  return axios
+    .get(`${API_URL}/topics/${topicSlug}/articles`)
+    .then(({ data }) => data.articles);
+};
+
+export const getComments = () => {
+  return axios.get(`${API_URL}/comments`).then(({ data }) => data.comments);
+};
+
+export const getCommentsForArticle = id => {
+  return axios
+    .get(`${API_URL}/articles/${id}/comments`)
+    .then(({ data }) => data.comments);
+};
+
+export const postComment = (id, body, created_by) => {
+  return axios
+    .post(`${API_URL}/articles/${id}/comments}`, body, created_by)
+    .then(({ data }) => data.comment);
+};

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../api";
+// import { Link } from "@reach/router";
+import Comments from "./Comments";
 
 class Article extends Component {
   state = {
@@ -7,12 +9,12 @@ class Article extends Component {
   };
   render() {
     const { article } = this.state;
-    // console.log(article);
     return (
       <main>
         <div key={article._id}>
           <h1>{article.title}</h1>
           <p>{article.body}</p>
+          <Comments id={this.props._id} />
         </div>
       </main>
     );
