@@ -15,15 +15,21 @@ class Comments extends Component {
       <main className="comments-body">
         <h3>Comments</h3>
         {!this.props.user.username ? (
-          <h5>Log In to post a comment</h5>
+          <h5>Log In to post a Comment</h5>
         ) : (
           <CommentPoster addComment={this.addComment} />
         )}
         {comments.map(comment => {
-          return <div className="comment" key={comment._id}>
+          return (
+            <div className="comment" key={comment._id}>
               <p className="comment-p">{comment.body}</p>
-              <CommentDeleter deleteComment={() => this.deleteComment(comment._id)} />
-            </div>;
+              {this.props.user.username === comment.created_by.username && (
+                <CommentDeleter
+                  deleteComment={() => this.deleteComment(comment._id)}
+                />
+              )}
+            </div>
+          );
         })}
       </main>
     );

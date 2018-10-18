@@ -60,6 +60,10 @@ export const voteCount = (id, type, direction) => {
 };
 
 export const postArticle = (topicslug, title, body, created_by) => {
+  console.log(topicslug, "<<<<SLUG");
+  console.log(title, "<<<<TITLE");
+  console.log(body, "<<<<BODY");
+  console.log(created_by, "<<<<CREATED_BY");
   return axios
     .post(`${API_URL}/topics/${topicslug}/articles`, {
       title,

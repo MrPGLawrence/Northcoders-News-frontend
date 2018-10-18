@@ -7,7 +7,8 @@ class CommentPoster extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input
+        <textarea
+          value={this.state.body}
           type="text"
           aria-label="comment body"
           onChange={this.handleChange}
@@ -26,6 +27,9 @@ class CommentPoster extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.addComment(this.state.body);
+    this.setState({
+      body: ""
+    });
   };
 }
 

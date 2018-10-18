@@ -1,36 +1,36 @@
 import React, { Component } from "react";
 import * as api from "../api";
-import { Link } from "@reach/router";
+import ArticlePoster from "./ArticlePoster";
+import AllArticles from "./AllArticles";
 
 class Articles extends Component {
   state = {
     articles: []
   };
   render() {
-    const { articles } = this.state;
     return (
-      <main>
-        {articles.map(article => {
-          return (
-            <div key={article._id}>
-              <Link to={`/articles/${article._id}`}>
-                <h2>{article.title}</h2>
-              </Link>
-            </div>
-          );
-        })}
-      </main>
+      <div className="Articles">
+        {!this.props.user.username ? (
+          <h5>Log In to post an Article</h5>
+        ) : (
+          <ArticlePoster
+            topics={this.props.topics}
+            addArticle={this.addArticle}
+          />
+        )}
+        <AllArticles  />
+      </div>
     );
   }
 
-  componentDidMount() {
-    this.getArticles();
-  }
-
-  getArticles = () => {
-    api.getArticles().then(articles => {
-      this.setState({ articles });
-    });
+  addArticle = (topicslug, title, body) => {
+    api
+      .postArticle(topicslug, title, body, this.props.user._id)
+      .then(article => {
+        this.setState({
+          articles: [article, ...this.state.articles]
+        });
+      });
   };
 }
 

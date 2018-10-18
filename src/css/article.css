@@ -1,0 +1,9 @@
+.all-articles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.article-box {
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  padding: 5px;
+}

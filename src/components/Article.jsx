@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
-// import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 import Comments from "./Comments";
 import Voter from "./Voter";
 
@@ -27,10 +27,14 @@ class Article extends Component {
   }
 
   componentDidMount() {
-    api.getArticlesById(this.props._id).then(article => {
-      this.setState({ article });
-    });
+    api
+      .getArticlesById(this.props._id)
+      .then(article => {
+        this.setState({ article });
+      })
+      .catch(err => {
+        navigate("/error", { replace: true, state: { msg: err.message } });
+      });
   }
 }
-
 export default Article;

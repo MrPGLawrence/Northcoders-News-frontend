@@ -6,7 +6,6 @@ class Voter extends Component {
     voteModifier: 0
   };
   render() {
-    console.log(this.props.votes, this.state.voteModifier);
     return (
       <div className="voter">
         <h3>Vote</h3>
@@ -34,7 +33,7 @@ class Voter extends Component {
   Vote = direction => {
     const newVote = direction === "up" ? 1 : -1;
     this.setState({ voteModifier: newVote });
-    api.voteCount(this.props.id, this.props.type, direction).catch(err => {
+    api.voteCount(this.props.id, this.props.type, direction).then(() => {
       this.setState({ voteModifier: 0 });
     });
   };
