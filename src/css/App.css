@@ -51,14 +51,20 @@ h1::first-letter {
   text-transform: uppercase;
 }
 
-.login {
-  color: #ffffff;
-}
-
 .article {
   padding-bottom: 20px;
 }
 
 .user {
   margin-top: 50px;
+}
+
+.header {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+.voter {
+  padding-bottom: 20px;
 }

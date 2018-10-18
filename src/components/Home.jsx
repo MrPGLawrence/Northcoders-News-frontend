@@ -8,7 +8,13 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <header>Header</header>
+        <header>
+          <img
+            className="header"
+            src={process.env.PUBLIC_URL + "/NC_news.jpg"}
+            alt="Header"
+          />
+        </header>
         <Articles />
       </div>
     );

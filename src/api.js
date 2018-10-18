@@ -52,3 +52,19 @@ export const deleteComment = id => {
     .delete(`${API_URL}/comments/${id}`)
     .then(({ data }) => data.comment);
 };
+
+export const voteCount = (id, type, direction) => {
+  return axios
+    .patch(`${API_URL}/${type}/${id}?vote=${direction}`)
+    .then(({ data }) => data.vote);
+};
+
+export const postArticle = (topicslug, title, body, created_by) => {
+  return axios
+    .post(`${API_URL}/topics/${topicslug}/articles`, {
+      title,
+      body,
+      created_by
+    })
+    .then(({ data }) => data.article);
+};

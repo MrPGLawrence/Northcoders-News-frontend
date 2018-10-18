@@ -11,14 +11,14 @@ import Article from "./components/Article";
 import User from "./components/User";
 import ArticlesByTopic from "./components/ArticlesByTopic";
 import Comments from "./components/Comments";
+import NewArticle from "./components/NewArticle";
 
 class App extends Component {
   state = {
     user: {}
   };
   render() {
-    return (
-      <div className="App">
+    return <div className="App">
         <Nav login={this.login} user={this.state.user} />
         <Router>
           <Home path="/" />
@@ -28,16 +28,13 @@ class App extends Component {
           <Article path="/articles/:_id" user={this.state.user} />
           <User path="/users/:username" />
           <ArticlesByTopic path="/topics/:topic_slug/articles" />
-          <Comments
-            path="/articles/:articleid/comments"
-            user={this.state.user}
-          />
+          <Comments path="/articles/:articleid/comments" user={this.state.user} />
+          <NewArticle path="/topics/:topic_slug/articles" />
         </Router>
         <footer>
           <p>Footer</p>
         </footer>
-      </div>
-    );
+      </div>;
   }
 
   login = username => {
