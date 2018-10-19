@@ -25,6 +25,11 @@ class Login extends Component {
             <button>Log Out</button>
             <Link to={`/users/${this.state.username}`}>
               {this.props.user.name}
+              <img
+                className="nav-pic"
+                src={this.props.user.avatar_url}
+                alt="Avatar"
+              />
             </Link>
           </>
         )}

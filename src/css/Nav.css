@@ -14,3 +14,12 @@ nav {
 .login {
   color: #ffffff;
 }
+
+.nav-pic {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  margin-bottom: auto;
+  position: absolute;
+}

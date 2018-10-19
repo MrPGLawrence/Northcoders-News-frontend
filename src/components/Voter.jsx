@@ -11,17 +11,18 @@ class Voter extends Component {
         <h3>Vote</h3>
         <button
           className="button-down"
-          onClick={() => this.Vote("down")}
+          onClick={() => this.vote("down")}
           disabled={this.state.voteModifier === -1}
         >
           -
         </button>
         <span className="rating">
-          {this.props.votes && this.props.votes + this.state.voteModifier}
+          {this.props.votes !== undefined &&
+            this.props.votes + this.state.voteModifier}
         </span>
         <button
           className="button-up"
-          onClick={() => this.Vote("up")}
+          onClick={() => this.vote("up")}
           disabled={this.state.voteModifier === 1}
         >
           +
@@ -29,13 +30,16 @@ class Voter extends Component {
       </div>
     );
   }
+  // componentDidUpdate(prevProps, prevState) {
 
-  Vote = direction => {
-    const newVote = direction === "up" ? 1 : -1;
+  // }
+
+  vote = direction => {
+    api.voteCount(this.props.id, this.props.type, direction);
+    // change voteModifier in this state
+    // change props => go to article and change votes => rerender
+    const newVote = direction === "up" ? 1 : this.state.voteModifier - 1;
     this.setState({ voteModifier: newVote });
-    api.voteCount(this.props.id, this.props.type, direction).then(() => {
-      this.setState({ voteModifier: 0 });
-    });
   };
 }
 

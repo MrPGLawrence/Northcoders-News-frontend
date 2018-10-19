@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../css/ArticlePoster.css";
 
 class ArticlePoster extends Component {
   state = {
@@ -8,14 +9,16 @@ class ArticlePoster extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="article-poster" onSubmit={this.handleSubmit}>
         <input
+          placeholder="Title"
           value={this.state.title}
           type="text"
           aria-label="article title"
           onChange={this.handleTitleChange}
           name="title"
-        />
+        >
+        </input>
         <select value={this.state.topic} onChange={this.handleTopicChange}>
           <option value="" disabled>
             Choose a Topic
@@ -27,6 +30,7 @@ class ArticlePoster extends Component {
           ))}
         </select>
         <textarea
+          placeholder="Write something here..."
           value={this.state.body}
           type="text"
           aria-label="article body"

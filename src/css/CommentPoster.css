@@ -1,0 +1,27 @@
+.comment-poster {
+  height: 10vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "body"
+    "body"
+    "button";
+
+  width: 50%;
+  margin: auto;
+}
+
+.comment-poster textarea {
+  grid-area: body;
+  margin: 10px;
+}
+
+.comment-poster button {
+  grid-area: button;
+  justify-content: center;
+  margin: auto;
+}
+
+.comment-poster button:hover {
+  background-color: rgba(194, 19, 49, 1);
+}

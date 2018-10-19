@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../css/CommentPoster.css";
 
 class CommentPoster extends Component {
   state = {
@@ -6,7 +7,7 @@ class CommentPoster extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="comment-poster" onSubmit={this.handleSubmit}>
         <textarea
           value={this.state.body}
           type="text"

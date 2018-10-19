@@ -16,6 +16,7 @@ import NotFound from "./components/NotFound";
 class App extends Component {
   state = {
     user: {},
+    users: [],
     topics: []
   };
   render() {
@@ -30,7 +31,7 @@ class App extends Component {
             topics={this.state.topics}
           />
           <Topics path="/topics" topics={this.state.topics} />
-          <Users path="/users" />
+          <Users path="/users" users={this.state.users} />
           <Article path="/articles/:_id" user={this.state.user} />
           <User path="/users/:username" />
           <ArticlesByTopic path="/topics/:topic_slug/articles" />
@@ -50,6 +51,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getTopics();
+    this.getUsers();
     const user = sessionStorage.getItem("username");
     if (user) {
       this.setState({ user: JSON.parse(user) });
@@ -61,6 +63,12 @@ class App extends Component {
       this.setState({
         topics
       });
+    });
+  };
+
+  getUsers = () => {
+    api.getUsers().then(users => {
+      this.setState({ users });
     });
   };
 

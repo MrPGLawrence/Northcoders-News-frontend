@@ -23,6 +23,7 @@ footer {
 button {
   color: #ffffff;
   background-color: #000000;
+  cursor: pointer;
 }
 
 a {
@@ -67,4 +68,24 @@ h1::first-letter {
 
 .voter {
   padding-bottom: 20px;
+}
+
+.button-up {
+  margin: 10px;
+}
+
+.button-up:active {
+  background-color: rgba(194, 19, 49, 1);
+}
+
+.button-down {
+  margin: 10px;
+}
+
+.button-down:active {
+  background-color: rgba(194, 19, 49, 1);
+}
+
+.loader {
+  text-align: center;
 }

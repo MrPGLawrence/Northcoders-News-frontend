@@ -4,6 +4,7 @@ import { Link } from "@reach/router";
 
 const Topics = props => {
   const { topics } = props;
+  console.log(topics);
   return (
     <main className="Topics">
       {topics.map(topic => {

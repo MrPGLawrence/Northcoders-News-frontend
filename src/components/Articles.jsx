@@ -18,7 +18,7 @@ class Articles extends Component {
             addArticle={this.addArticle}
           />
         )}
-        <AllArticles  />
+        <AllArticles />
       </div>
     );
   }
