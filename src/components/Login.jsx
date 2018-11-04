@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 
 class Login extends Component {
@@ -25,6 +26,8 @@ class Login extends Component {
             <button>Log Out</button>
             <Link to={`/users/${this.state.username}`}>
               {this.props.user.name}
+            </Link>
+            <Link to={`/users/${this.state.username}`}>
               <img
                 className="nav-pic"
                 src={this.props.user.avatar_url}
@@ -48,5 +51,10 @@ class Login extends Component {
     });
   };
 }
+
+Login.propTypes = {
+  user: PropTypes.object,
+  login: PropTypes.func
+};
 
 export default Login;

@@ -37,7 +37,7 @@ p {
   padding-bottom: 20px;
 }
 
-.article-p {
+.article-body {
   text-align: left;
 }
 
@@ -71,21 +71,66 @@ h1::first-letter {
 }
 
 .button-up {
+  background-color: #ffffff;
+  color: #000000;
   margin: 10px;
 }
 
-.button-up:active {
-  background-color: rgba(194, 19, 49, 1);
+.button-up:hover {
+  color: rgba(194, 19, 49, 1);
 }
 
 .button-down {
+  background-color: #ffffff;
+  color: #000000;
   margin: 10px;
 }
 
-.button-down:active {
-  background-color: rgba(194, 19, 49, 1);
+.button-down:hover {
+  color: rgba(194, 19, 49, 1);
 }
 
 .loader {
   text-align: center;
+}
+
+.footer-p {
+  color: #ffffff;
+  padding: 20px;
+}
+
+.social {
+  max-width: 50%;
+  margin: auto;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.social-google {
+  color: #ffffff;
+}
+.social-twitter {
+  color: #ffffff;
+}
+.social-linkedin {
+  color: #ffffff;
+}
+.social-github {
+  color: #ffffff;
+}
+
+.social svg {
+  height: 30px;
+  width: 30px;
+}
+
+.social :hover {
+  color: rgba(194, 19, 49, 1);
+}
+
+.error-image {
+  max-width: 100%;
+  height: auto;
+  width: auto;
 }

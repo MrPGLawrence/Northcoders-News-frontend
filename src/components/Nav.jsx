@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../css/Nav.css";
 import { Link } from "@reach/router";
 import Login from "./Login";
@@ -20,6 +21,11 @@ const Nav = props => {
       <Login login={props.login} user={props.user} />
     </nav>
   );
+};
+
+Nav.propTypes = {
+  user: PropTypes.object,
+  login: PropTypes.func
 };
 
 export default Nav;

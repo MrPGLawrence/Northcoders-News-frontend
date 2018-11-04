@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "../css/CommentPoster.css";
 
 class CommentPoster extends Component {
@@ -33,5 +34,9 @@ class CommentPoster extends Component {
     });
   };
 }
+
+CommentPoster.propTypes = {
+  addComment: PropTypes.func
+};
 
 export default CommentPoster;

@@ -1,25 +1,12 @@
 import React from "react";
-import { PulseLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
-class Loader extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true
-    };
-  }
-  render() {
-    return (
-      <div className="loader">
-        <PulseLoader
-          sizeUnit={"px"}
-          size={20}
-          color={"#c21331"}
-          loading={this.state.loading}
-        />
-      </div>
-    );
-  }
-}
+const Loader = () => {
+  return (
+    <div className="loader">
+      <ClipLoader sizeUnit={"px"} size={75} color={"#c21331"} />
+    </div>
+  );
+};
 
 export default Loader;

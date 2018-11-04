@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./css/App.css";
 import * as api from "./api";
-import { Router } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
@@ -9,32 +9,39 @@ import Users from "./components/Users";
 import Topics from "./components/Topics";
 import Article from "./components/Article";
 import User from "./components/User";
-import ArticlesByTopic from "./components/ArticlesByTopic";
 import Comments from "./components/Comments";
 import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
 
 class App extends Component {
   state = {
     user: {},
-    users: [],
     topics: []
   };
   render() {
     return (
       <div className="App">
-        <Nav login={this.login} user={this.state.user} />
+        <Nav
+          login={this.login}
+          topics={this.state.topics}
+          user={this.state.user}
+        />
         <Router>
-          <Home path="/" />
+          <Home path="/" topics={this.state.topics} user={this.state.user} />
           <Articles
             path="/articles"
             user={this.state.user}
             topics={this.state.topics}
           />
           <Topics path="/topics" topics={this.state.topics} />
-          <Users path="/users" users={this.state.users} />
+          <Articles
+            user={this.state.user}
+            topics={this.state.topics}
+            path="/topics/:topic_slug/articles"
+          />
+          <Users path="/users" />
           <Article path="/articles/:_id" user={this.state.user} />
           <User path="/users/:username" />
-          <ArticlesByTopic path="/topics/:topic_slug/articles" />
           <Comments
             path="/articles/:articleid/comments"
             user={this.state.user}
@@ -42,16 +49,13 @@ class App extends Component {
           <NotFound path="/error" />
           <NotFound default />
         </Router>
-        <footer>
-          <p>Footer</p>
-        </footer>
+        <Footer />
       </div>
     );
   }
 
   componentDidMount() {
     this.getTopics();
-    this.getUsers();
     const user = sessionStorage.getItem("username");
     if (user) {
       this.setState({ user: JSON.parse(user) });
@@ -59,26 +63,30 @@ class App extends Component {
   }
 
   getTopics = () => {
-    api.getTopics().then(topics => {
-      this.setState({
-        topics
+    api
+      .getTopics()
+      .then(topics => {
+        this.setState({
+          topics
+        });
+      })
+      .catch(err => {
+        navigate("/error", { replace: true, state: { msg: err.message } });
       });
-    });
-  };
-
-  getUsers = () => {
-    api.getUsers().then(users => {
-      this.setState({ users });
-    });
   };
 
   login = username => {
     this.state.user.username
       ? this.setState({ user: {} })
-      : api.getUsersByUsername(username).then(user => {
-          sessionStorage.setItem(username, JSON.stringify(user));
-          this.setState({ user });
-        });
+      : api
+          .getUsersByUsername(username)
+          .then(user => {
+            sessionStorage.setItem(username, JSON.stringify(user));
+            this.setState({ user });
+          })
+          .catch(err => {
+            navigate("/error", { replace: true, state: { msg: err.message } });
+          });
   };
 }
 

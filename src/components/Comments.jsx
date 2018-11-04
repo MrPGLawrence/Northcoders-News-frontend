@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "../css/Comments.css";
 import * as api from "../api";
 import CommentPoster from "./CommentPoster";
 import CommentDeleter from "./CommentDeleter";
-// import { Link } from "@reach/router";
+import Voter from "./Voter";
+import { Link } from "@reach/router";
 
 class Comments extends Component {
   state = {
@@ -23,6 +25,20 @@ class Comments extends Component {
           return (
             <div className="comment" key={comment._id}>
               <p className="comment-p">{comment.body}</p>
+              <p>
+                <Link
+                  className="comment-username"
+                  to={`/users/${comment.created_by.username}`}
+                >
+                  <img
+                    className="nav-pic"
+                    src={comment.created_by.avatar_url}
+                    alt="Avatar"
+                  />
+                  {comment.created_by.username}
+                </Link>
+              </p>
+              <Voter id={comment._id} votes={comment.votes} type="comments" />
               {this.props.user.username === comment.created_by.username && (
                 <CommentDeleter
                   deleteComment={() => this.deleteComment(comment._id)}
@@ -57,5 +73,10 @@ class Comments extends Component {
     });
   };
 }
+
+Comments.propTypes = {
+  user: PropTypes.object,
+  id: PropTypes.string
+};
 
 export default Comments;

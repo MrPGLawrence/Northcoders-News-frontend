@@ -1,8 +1,11 @@
 import axios from "axios";
-import { API_URL } from "./config";
+const API_URL = "https://patrick-northcoders-news.herokuapp.com/api";
 
-export const getArticles = () => {
-  return axios.get(`${API_URL}/articles`).then(({ data }) => data.articles);
+export const getArticles = topic => {
+  const url = topic
+    ? `${API_URL}/topics/${topic}/articles`
+    : `${API_URL}/articles`;
+  return axios.get(url).then(({ data }) => data.articles);
 };
 
 export const getTopics = () => {
@@ -60,10 +63,6 @@ export const voteCount = (id, type, direction) => {
 };
 
 export const postArticle = (topicslug, title, body, created_by) => {
-  console.log(topicslug, "<<<<SLUG");
-  console.log(title, "<<<<TITLE");
-  console.log(body, "<<<<BODY");
-  console.log(created_by, "<<<<CREATED_BY");
   return axios
     .post(`${API_URL}/topics/${topicslug}/articles`, {
       title,

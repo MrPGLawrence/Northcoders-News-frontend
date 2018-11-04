@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import * as api from "../api";
+import * as FontAwesome from "react-icons/fa";
 
 class Voter extends Component {
   state = {
@@ -8,13 +10,12 @@ class Voter extends Component {
   render() {
     return (
       <div className="voter">
-        <h3>Vote</h3>
         <button
           className="button-down"
           onClick={() => this.vote("down")}
           disabled={this.state.voteModifier === -1}
         >
-          -
+          <FontAwesome.FaThumbsDown />
         </button>
         <span className="rating">
           {this.props.votes !== undefined &&
@@ -25,22 +26,26 @@ class Voter extends Component {
           onClick={() => this.vote("up")}
           disabled={this.state.voteModifier === 1}
         >
-          +
+          <FontAwesome.FaThumbsUp />
         </button>
       </div>
     );
   }
-  // componentDidUpdate(prevProps, prevState) {
-
-  // }
 
   vote = direction => {
     api.voteCount(this.props.id, this.props.type, direction);
-    // change voteModifier in this state
-    // change props => go to article and change votes => rerender
-    const newVote = direction === "up" ? 1 : this.state.voteModifier - 1;
+    const newVote =
+      direction === "up"
+        ? this.state.voteModifier + 1
+        : this.state.voteModifier - 1;
     this.setState({ voteModifier: newVote });
   };
 }
+
+Voter.propTypes = {
+  votes: PropTypes.string,
+  id: PropTypes.string,
+  type: PropTypes.string
+};
 
 export default Voter;

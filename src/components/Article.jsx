@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import * as api from "../api";
 import { navigate } from "@reach/router";
 import Comments from "./Comments";
 import Voter from "./Voter";
+import Loader from "./Loader";
 
 class Article extends Component {
   state = {
@@ -10,11 +12,13 @@ class Article extends Component {
   };
   render() {
     const { article } = this.state;
-    return (
+    return !this.state.article.body ? (
+      <Loader />
+    ) : (
       <main>
         <div className="article" key={article._id}>
           <h1>{article.title}</h1>
-          <p className="article-p">{article.body}</p>
+          <p className="article-body">{article.body}</p>
           <Voter
             id={this.state.article._id}
             votes={this.state.article.votes}
@@ -37,4 +41,10 @@ class Article extends Component {
       });
   }
 }
+
+Article.propTypes = {
+  _id: PropTypes.string,
+  user: PropTypes.object
+};
+
 export default Article;

@@ -1,17 +1,14 @@
 import React from "react";
-import AllArticles from "./AllArticles";
+import Articles from "./Articles";
+import header from "../assets/NC-news.jpg";
 
-const Home = props => {
+const Home = ({ location, topics, user }) => {
   return (
     <div className="Home">
       <header>
-        <img
-          className="header"
-          src={process.env.PUBLIC_URL + "/NC-news.jpg"}
-          alt="Header"
-        />
+        <img className="header" src={header} alt="Header" />
       </header>
-      <AllArticles />
+      <Articles location={location} topics={topics} user={user} />
     </div>
   );
 };

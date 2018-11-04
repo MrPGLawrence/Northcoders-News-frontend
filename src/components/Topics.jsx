@@ -1,10 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../css/Topics.css";
 import { Link } from "@reach/router";
 
 const Topics = props => {
   const { topics } = props;
-  console.log(topics);
   return (
     <main className="Topics">
       {topics.map(topic => {
@@ -18,6 +18,10 @@ const Topics = props => {
       })}
     </main>
   );
+};
+
+Topics.propTypes = {
+  topics: PropTypes.array
 };
 
 export default Topics;
