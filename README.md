@@ -46,7 +46,7 @@ The home page displays all the articles that have been posted on the app, as wel
 
 ## Articles
 
-Like the home page, the articles page displays all the articles. It also gives you the option to post your own article. To post an article you must be logged in to do so. For demonstration purposes, you will be able to sign into the application as user Jess Jelly. Each article is displayed with a title, the user who posted it, how many votes and comments it has and the date and time it was posted.
+Like the home page, the articles page displays all the articles. It also gives you the option to post your own article. To post an article you must be logged in to do so. For demonstration purposes, you will be able to sign into the application as user Tom Tickle. Each article is displayed with a title, the user who posted it, how many votes and comments it has and the date and time it was posted.
 
 ## Topics
 
